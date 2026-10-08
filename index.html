@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>経営学ノート | 経営学の勉強サイト</title>
+<meta name="description" content="経営学を学びながら、ノートのように記録していく勉強サイト。勉強の進捗ブログ、漫画やコラムを載せています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #8b0000;
+    --red-deep: #5c0000;
+    --red-tint: #f6e3e3;
+    --paper: #fbfcfe;
+    --rule: #dbe1ee;
+    --ink: #1f2330;
+    --muted: #596074;
+    --mark: #ffe58a;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    --margin-x: clamp(28px, 7vw, 88px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink);
+    background-color: var(--paper);
+    /* 大学ノートの罫線 */
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      var(--rule) 31px,
+      var(--rule) 32px
+    );
+  }
+
+  a { color: var(--red); text-underline-offset: 3px; }
+  a:hover { color: var(--red-deep); }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+  /* ---------- ヘッダー ---------- */
+  .site-header {
+    background: var(--red);
+    color: #fff;
+  }
+  .site-header .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 14px var(--margin-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    flex-wrap: wrap;
+  }
+  .site-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    color: #fff;
+    text-decoration: none;
+  }
+  .site-title:hover { color: #fff; }
+  .site-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .site-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 14px;
+    line-height: 1.8;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+  }
+  .site-nav a:hover { border-bottom-color: rgba(255,255,255,.7); color: #fff; }
+  .site-nav a[aria-current="page"] { border-bottom-color: #fff; }
+  .site-header :focus-visible { outline-color: #fff; }
+
+  /* ---------- ノートの余白線 ---------- */
+  .notebook {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px 0 var(--margin-x);
+  }
+  .notebook::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--margin-x) - 20px);
+    width: 2px;
+    background: var(--red);
+    opacity: .75;
+  }
+
+  section { padding: 56px 0 8px; }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; margin: 0; }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 8px;
+    color: var(--red);
+  }
+  .lead { margin: 0 0 24px; color: var(--muted); }
+
+  /* ---------- ヒーロー ---------- */
+  .hero {
+    padding-top: 64px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 32px 48px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+  .hero p { margin: 16px 0 0; max-width: 34em; }
+  .hero .marker {
+    background: linear-gradient(transparent 55%, var(--mark) 55%);
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .btn {
+    display: inline-block;
+    padding: 6px 22px;
+    line-height: 1.8;
+    border: 2px solid var(--red);
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 2px;
+  }
+  .btn:hover { background: var(--red-deep); border-color: var(--red-deep); color: #fff; }
+  .btn.ghost { background: var(--paper); color: var(--red); }
+  .btn.ghost:hover { background: var(--red-tint); color: var(--red-deep); }
+
+  .swot { width: 100%; height: auto; display: block; }
+
+  /* ---------- 学習マップ ---------- */
+  .map-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid var(--red);
+    background: var(--paper);
+  }
+  .map-list li {
+    display: grid;
+    grid-template-columns: 10em 1fr;
+    gap: 4px 24px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .map-list strong { font-family: var(--serif); font-size: 1.05rem; }
+  .map-list span { color: var(--muted); }
+
+  /* ---------- ブログ抜粋 ---------- */
+  .posts { background: var(--paper); border-top: 2px solid var(--red); }
+  .post {
+    display: grid;
+    grid-template-columns: 7.5em 1fr;
+    gap: 4px 20px;
+    padding: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .post time { color: var(--red); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .post p { margin: 0; }
+
+  .more { margin: 16px 0 0; text-align: right; }
+
+  /* ---------- コラム抜粋 ---------- */
+  .column-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px 40px;
+    align-items: start;
+  }
+  .yonkoma-wrap {
+    background: var(--paper);
+    border: 2px solid var(--red);
+    padding: 16px;
+  }
+  .yonkoma-wrap h3 { font-size: 1.1rem; line-height: 1.6; margin-bottom: 8px; }
+  .yonkoma {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .yonkoma li {
+    aspect-ratio: 3 / 4;
+    border: 1.5px dashed var(--red);
+    background: var(--red-tint);
+    display: flex;
+    align-items: flex-start;
+    padding: 4px 6px;
+    font-size: .8rem;
+    line-height: 1.4;
+    color: var(--red);
+    font-weight: 700;
+  }
+  .yonkoma-wrap p { margin: 8px 0 0; font-size: .9rem; line-height: 1.8; color: var(--muted); }
+
+  .essay h3 { font-size: 1.2rem; line-height: 1.7; margin-bottom: 4px; }
+  .essay .meta { margin: 0 0 8px; font-size: .9rem; color: var(--muted); }
+  .essay p { margin: 0 0 8px; }
+
+  /* ---------- フッター ---------- */
+  .site-footer {
+    margin-top: 64px;
+    background: var(--red-deep);
+    color: #f3dcdc;
+  }
+  .site-footer .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 20px var(--margin-x);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px 24px;
+    flex-wrap: wrap;
+    font-size: .9rem;
+    line-height: 1.8;
+  }
+  .site-footer a { color: #fff; }
+  .site-footer :focus-visible { outline-color: #fff; }
+
+  /* ---------- スマホ ---------- */
+  @media (max-width: 760px) {
+    :root { --margin-x: 36px; }
+    .hero, .column-grid { grid-template-columns: 1fr; }
+    .map-list li, .post { grid-template-columns: 1fr; }
+    .hero { padding-top: 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="site-title" href="index.html">経営学ノート</a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html" aria-current="page">ホーム</a>
+      <a href="blog.html">ブログ</a>
+      <a href="column.html">コラム</a>
+      <a href="about.html">このサイトについて</a>
+    </nav>
+  </div>
+</header>
+
+<main class="notebook">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <h1 id="hero-title">経営学を、<br>ノートに書いて<br>理解していく。</h1>
+      <p>講義ノートを一冊ずつ埋めていくように、<span class="marker">学んだことを記録する勉強サイト</span>です。戦略、マーケティング、組織、会計。むずかしそうな言葉を、自分の言葉に直していきます。</p>
+      <div class="hero-actions">
+        <a class="btn" href="blog.html">勉強の記録を見る</a>
+        <a class="btn ghost" href="column.html">コラムを読む</a>
+      </div>
+    </div>
+
+    <!-- SWOT分析のノート風スケッチ -->
+    <svg class="swot" viewBox="0 0 360 320" role="img" aria-label="ノートに描いたSWOT分析の2×2の表。強み、弱み、機会、脅威の4つに分かれている">
+      <rect x="40" y="30" width="300" height="260" fill="#fbfcfe" stroke="#8b0000" stroke-width="2.5"/>
+      <rect x="40" y="30" width="150" height="130" fill="#f6e3e3"/>
+      <line x1="190" y1="30" x2="190" y2="290" stroke="#8b0000" stroke-width="2.5"/>
+      <line x1="40" y1="160" x2="340" y2="160" stroke="#8b0000" stroke-width="2.5"/>
+      <g font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" fill="#1f2330">
+        <text x="115" y="88" text-anchor="middle" font-size="40" font-weight="700" fill="#8b0000">S</text>
+        <text x="115" y="124" text-anchor="middle" font-size="18" font-weight="700">強み</text>
+        <text x="265" y="88" text-anchor="middle" font-size="40" font-weight="700">W</text>
+        <text x="265" y="124" text-anchor="middle" font-size="18" font-weight="700">弱み</text>
+        <text x="115" y="218" text-anchor="middle" font-size="40" font-weight="700">O</text>
+        <text x="115" y="254" text-anchor="middle" font-size="18" font-weight="700">機会</text>
+        <text x="265" y="218" text-anchor="middle" font-size="40" font-weight="700">T</text>
+        <text x="265" y="254" text-anchor="middle" font-size="18" font-weight="700">脅威</text>
+      </g>
+      <g font-family="'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif" font-size="12" fill="#596074">
+        <text x="115" y="20" text-anchor="middle">プラス要因</text>
+        <text x="265" y="20" text-anchor="middle">マイナス要因</text>
+        <text x="30" y="98" text-anchor="middle" transform="rotate(-90 30 98)">内部環境</text>
+        <text x="30" y="228" text-anchor="middle" transform="rotate(-90 30 228)">外部環境</text>
+        <text x="190" y="312" text-anchor="middle">SWOT分析</text>
+      </g>
+    </svg>
+  </section>
+
+  <section aria-labelledby="map-title">
+    <h2 id="map-title">学習マップ</h2>
+    <p class="lead">経営学で学ぶ主な分野です。勉強を進めながら、ブログとコラムで少しずつ書き足していきます。</p>
+    <ul class="map-list">
+      <li><strong>経営戦略</strong><span>会社はどこで、どう戦うかを考える分野。SWOT分析やポーターの5つの力など。</span></li>
+      <li><strong>マーケティング</strong><span>商品がお客さんに届くまでの仕組み。4Pや市場の分け方など。</span></li>
+      <li><strong>組織論</strong><span>人が集まって動く組織の作り方。リーダーシップやモチベーションの理論など。</span></li>
+      <li><strong>会計・財務</strong><span>お金の流れを数字で読む分野。財務諸表や損益分岐点など。</span></li>
+      <li><strong>人的資源管理</strong><span>採用、育成、評価など、人を活かす仕組みを学ぶ分野。</span></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="blog-title">
+    <h2 id="blog-title">最近の勉強ログ</h2>
+    <p class="lead">その日に勉強したことを、短く書いたメモです。</p>
+    <div class="posts">
+      <article class="post">
+        <time datetime="2026-10-08">2026.10.08</time>
+        <p>SWOT分析を復習。強み・弱みは会社の内側、機会・脅威は外側の話。「内か外か」で分けると頭に入りやすい。</p>
+      </article>
+      <article class="post">
+        <time datetime="2026-10-07">2026.10.07</time>
+        <p>マーケティングの4Pを整理した。商品、価格、流通、販促。身近なコンビニで当てはめてみたら意外とわかった。</p>
+      </article>
+      <article class="post">
+        <time datetime="2026-10-06">2026.10.06</time>
+        <p>組織論のノートを作成。理論の名前が多くて混ざるので、人物と一緒に覚え直す作戦にする。</p>
+      </article>
+    </div>
+    <p class="more"><a href="blog.html">ブログをすべて見る</a></p>
+  </section>
+
+  <section aria-labelledby="column-title">
+    <h2 id="column-title">コラム</h2>
+    <p class="lead">経営学にまつわる4コマや漫画、イラスト、短い小論文を載せています。</p>
+    <div class="column-grid">
+      <div class="yonkoma-wrap">
+        <h3>4コマ漫画：テスト前の経営学生</h3>
+        <ol class="yonkoma" aria-label="4コマ漫画の置き場所">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ol>
+        <p>ここに4コマ漫画の画像が入ります。</p>
+      </div>
+      <article class="essay">
+        <h3>なぜ会社には「経営理念」があるのか</h3>
+        <p class="meta">小論文・2026.10.05</p>
+        <p>会社の壁に貼られている経営理念を、ただの飾りだと思っていた。けれど授業で、判断に迷ったときの基準になるのだと知った。</p>
+        <p>理念があれば、社員は上司に聞かなくても同じ方向を向ける。その仕組みについて、自分なりに考えてみる。</p>
+        <p class="more" style="text-align:left"><a href="column.html">コラムをすべて見る</a></p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>経営学ノート 学生による経営学の勉強記録</span>
+    <span><a href="about.html">このサイトについて</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
