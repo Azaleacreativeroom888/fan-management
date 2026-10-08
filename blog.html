@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ブログ | 経営学ノート</title>
+<meta name="description" content="経営学の勉強の進捗を、日付と日記で短く記録するブログです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #8b0000;
+    --red-deep: #5c0000;
+    --red-tint: #f6e3e3;
+    --paper: #fbfcfe;
+    --rule: #dbe1ee;
+    --ink: #1f2330;
+    --muted: #596074;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    --margin-x: clamp(28px, 7vw, 88px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      var(--rule) 31px,
+      var(--rule) 32px
+    );
+  }
+
+  a { color: var(--red); text-underline-offset: 3px; }
+  a:hover { color: var(--red-deep); }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+  /* ---------- ヘッダー ---------- */
+  .site-header { background: var(--red); color: #fff; }
+  .site-header .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 14px var(--margin-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    flex-wrap: wrap;
+  }
+  .site-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    color: #fff;
+    text-decoration: none;
+  }
+  .site-title:hover { color: #fff; }
+  .site-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .site-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 14px;
+    line-height: 1.8;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+  }
+  .site-nav a:hover { border-bottom-color: rgba(255,255,255,.7); color: #fff; }
+  .site-nav a[aria-current="page"] { border-bottom-color: #fff; }
+  .site-header :focus-visible { outline-color: #fff; }
+
+  /* ---------- ノートの余白線 ---------- */
+  .notebook {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px 0 var(--margin-x);
+  }
+  .notebook::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--margin-x) - 20px);
+    width: 2px;
+    background: var(--red);
+    opacity: .75;
+  }
+
+  h1, h2 { font-family: var(--serif); font-weight: 700; margin: 0; }
+
+  .page-head { padding: 56px 0 8px; }
+  .page-head h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    color: var(--red);
+  }
+  .page-head p { margin: 8px 0 0; color: var(--muted); max-width: 34em; }
+
+  /* ---------- タイムライン ---------- */
+  .timeline {
+    max-width: 640px;
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .tweet {
+    background: #fff;
+    border: 1.5px solid var(--rule);
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 10px 20px 12px;
+  }
+  .tweet time {
+    display: block;
+    color: var(--red);
+    font-weight: 700;
+    font-size: .9rem;
+    line-height: 1.8;
+    font-variant-numeric: tabular-nums;
+  }
+  .tweet p { margin: 0; line-height: 1.9; }
+
+  .timeline-end {
+    max-width: 640px;
+    margin: 24px 0 0;
+    color: var(--muted);
+    font-size: .9rem;
+    text-align: center;
+  }
+
+  /* ---------- フッター ---------- */
+  .site-footer {
+    margin-top: 64px;
+    background: var(--red-deep);
+    color: #f3dcdc;
+  }
+  .site-footer .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 20px var(--margin-x);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px 24px;
+    flex-wrap: wrap;
+    font-size: .9rem;
+    line-height: 1.8;
+  }
+  .site-footer a { color: #fff; }
+  .site-footer :focus-visible { outline-color: #fff; }
+
+  @media (max-width: 760px) {
+    :root { --margin-x: 36px; }
+    .page-head { padding-top: 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="site-title" href="index.html">経営学ノート</a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="blog.html" aria-current="page">ブログ</a>
+      <a href="column.html">コラム</a>
+      <a href="about.html">このサイトについて</a>
+    </nav>
+  </div>
+</header>
+
+<main class="notebook">
+
+  <div class="page-head">
+    <h1>ブログ</h1>
+    <p>勉強の進捗を、日付と日記で短く残しています。新しい記録が上に並びます。</p>
+  </div>
+
+  <ol class="timeline" aria-label="勉強ログの一覧">
+
+    <!-- 新しい記録は、この下に <li class="tweet"> をコピーして追加してください -->
+
+    <li class="tweet">
+      <time datetime="2026-10-08">2026.10.08</time>
+      <p>SWOT分析を復習。強み・弱みは会社の内側、機会・脅威は外側の話。「内か外か」で分けると頭に入りやすい。</p>
+    </li>
+
+    <li class="tweet">
+      <time datetime="2026-10-07">2026.10.07</time>
+      <p>マーケティングの4Pを整理した。商品、価格、流通、販促。身近なコンビニで当てはめてみたら意外とわかった。</p>
+    </li>
+
+    <li class="tweet">
+      <time datetime="2026-10-06">2026.10.06</time>
+      <p>組織論のノートを作成。理論の名前が多くて混ざるので、人物と一緒に覚え直す作戦にする。</p>
+    </li>
+
+    <li class="tweet">
+      <time datetime="2026-10-05">2026.10.05</time>
+      <p>経営理念についての小論文を書き始めた。授業で聞いた話を、自分の言葉で説明できるか試している。</p>
+    </li>
+
+    <li class="tweet">
+      <time datetime="2026-10-03">2026.10.03</time>
+      <p>損益分岐点の計算問題を3問解いた。固定費と変動費の区別でつまずいたので、明日もう一度やる。</p>
+    </li>
+
+    <li class="tweet">
+      <time datetime="2026-10-02">2026.10.02</time>
+      <p>ポーターの5つの力を図にまとめた。業界の中の競争だけでなく、買い手や売り手の力も見るのが大事。</p>
+    </li>
+
+    <li class="tweet">
+      <time datetime="2026-09-30">2026.09.30</time>
+      <p>経営学の入門書を一冊読み終えた。専門用語は多いけれど、事例が出てくると急におもしろくなる。</p>
+    </li>
+
+    <li class="tweet">
+      <time datetime="2026-09-28">2026.09.28</time>
+      <p>このサイトを作り始めた。勉強したことをノートのように残していく。続けられるようにがんばる。</p>
+    </li>
+
+  </ol>
+
+  <p class="timeline-end">ここが最初の記録です。</p>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>経営学ノート 学生による経営学の勉強記録</span>
+    <span><a href="about.html">このサイトについて</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
