@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>経営学に関する人物 | 経営学ノート</title>
+<meta name="description" content="経営学に大きな影響を与えた人物を、名前・没年・国・解説でまとめた特集ページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #8b0000;
+    --red-deep: #5c0000;
+    --red-tint: #f6e3e3;
+    --paper: #fbfcfe;
+    --rule: #dbe1ee;
+    --ink: #1f2330;
+    --muted: #596074;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    --margin-x: clamp(28px, 7vw, 88px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      var(--rule) 31px,
+      var(--rule) 32px
+    );
+  }
+
+  a { color: var(--red); text-underline-offset: 3px; }
+  a:hover { color: var(--red-deep); }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+  /* ---------- ヘッダー ---------- */
+  .site-header { background: var(--red); color: #fff; }
+  .site-header .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 14px var(--margin-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    flex-wrap: wrap;
+  }
+  .site-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    color: #fff;
+    text-decoration: none;
+  }
+  .site-title:hover { color: #fff; }
+  .site-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .site-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 14px;
+    line-height: 1.8;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+  }
+  .site-nav a:hover { border-bottom-color: rgba(255,255,255,.7); color: #fff; }
+  .site-nav a[aria-current] { border-bottom-color: #fff; }
+  .site-header :focus-visible { outline-color: #fff; }
+
+  /* ---------- ノートの余白線 ---------- */
+  .notebook {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px 0 var(--margin-x);
+  }
+  .notebook::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--margin-x) - 20px);
+    width: 2px;
+    background: var(--red);
+    opacity: .75;
+  }
+
+  h1 { font-family: var(--serif); font-weight: 700; margin: 0; }
+
+  .page-head { padding: 56px 0 8px; }
+  .page-head h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    color: var(--red);
+  }
+  .page-head p { margin: 8px 0 0; color: var(--muted); max-width: 34em; }
+  .back { margin: 16px 0 0; font-size: .95rem; }
+
+  /* ---------- 人物の表 ---------- */
+  .people {
+    width: 100%;
+    max-width: 860px;
+    margin: 32px 0 0;
+    border-collapse: collapse;
+    background: #fff;
+    border: 2px solid var(--red);
+    line-height: 1.8;
+  }
+  .people caption {
+    text-align: left;
+    padding: 0 0 8px;
+    color: var(--muted);
+    font-size: .9rem;
+    caption-side: top;
+  }
+  .people thead th {
+    background: var(--red);
+    color: #fff;
+    text-align: left;
+    font-weight: 700;
+    padding: 8px 14px;
+    white-space: nowrap;
+  }
+  .people tbody th,
+  .people tbody td {
+    padding: 10px 14px;
+    border-top: 1px solid var(--rule);
+    vertical-align: top;
+    text-align: left;
+  }
+  .people tbody th {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--red);
+    white-space: nowrap;
+  }
+  .people .year { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .people .country { white-space: nowrap; }
+
+  /* ---------- フッター ---------- */
+  .site-footer {
+    margin-top: 64px;
+    background: var(--red-deep);
+    color: #f3dcdc;
+  }
+  .site-footer .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 20px var(--margin-x);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px 24px;
+    flex-wrap: wrap;
+    font-size: .9rem;
+    line-height: 1.8;
+  }
+  .site-footer a { color: #fff; }
+  .site-footer :focus-visible { outline-color: #fff; }
+
+  /* ---------- スマホ：1人ずつカード表示 ---------- */
+  @media (max-width: 760px) {
+    :root { --margin-x: 36px; }
+    .page-head { padding-top: 40px; }
+
+    .people, .people tbody, .people tr, .people th, .people td { display: block; }
+    .people { border: 0; background: transparent; }
+    .people thead { position: absolute; left: -9999px; }
+    .people tbody tr {
+      background: #fff;
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      margin: 0 0 16px;
+      padding: 8px 0;
+    }
+    .people tbody th,
+    .people tbody td {
+      border-top: 0;
+      padding: 2px 14px;
+      white-space: normal;
+    }
+    .people tbody th { font-size: 1.15rem; }
+    .people td::before {
+      content: attr(data-label) "：";
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="site-title" href="index.html">経営学ノート</a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="blog.html">ブログ</a>
+      <a href="column.html" aria-current="true">コラム</a>
+      <a href="about.html">このサイトについて</a>
+    </nav>
+  </div>
+</header>
+
+<main class="notebook">
+
+  <div class="page-head">
+    <h1>経営学に関する人物</h1>
+    <p>経営学に大きな影響を与えた人物を、没年の早い順にまとめました。</p>
+    <p class="back"><a href="column.html">コラムにもどる</a></p>
+  </div>
+
+  <table class="people">
+    <caption>経営学に関する人物の一覧（18人）</caption>
+    <thead>
+      <tr>
+        <th scope="col">名前</th>
+        <th scope="col">没年</th>
+        <th scope="col">国</th>
+        <th scope="col">解説</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 新しい人物は、この下に <tr> をコピーして追加してください -->
+
+      <tr>
+        <th scope="row">フレデリック・テイラー</th>
+        <td class="year" data-label="没年">1915年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">作業を細かく分けて時間を測り、仕事の標準を決める「科学的管理法」を考えた。経営学の出発点とされる人物。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">マックス・ウェーバー</th>
+        <td class="year" data-label="没年">1920年</td>
+        <td class="country" data-label="国">ドイツ</td>
+        <td data-label="解説">社会学者。役割や規則がはっきりした組織の形を「官僚制」として理論にまとめた。現代の組織を考える土台になっている。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">アンリ・ファヨール</th>
+        <td class="year" data-label="没年">1925年</td>
+        <td class="country" data-label="国">フランス</td>
+        <td data-label="解説">鉱山会社の経営者。経営の仕事を計画・組織・命令・調整・統制の働きに整理した。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">渋沢栄一</th>
+        <td class="year" data-label="没年">1931年</td>
+        <td class="country" data-label="国">日本</td>
+        <td data-label="解説">数多くの企業の設立に関わり、「日本資本主義の父」と呼ばれる。道徳と利益の両立を説いた『論語と算盤』で知られる。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ヘンリー・フォード</th>
+        <td class="year" data-label="没年">1947年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">自動車の組み立てを流れ作業にして、車の大量生産と低価格化を実現した。T型フォードで有名。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">エルトン・メイヨー</th>
+        <td class="year" data-label="没年">1949年</td>
+        <td class="country" data-label="国">オーストラリア（アメリカで活躍）</td>
+        <td data-label="解説">ホーソン実験から、職場の人間関係が働く意欲に影響することを示した。人間関係論の中心人物。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">チェスター・バーナード</th>
+        <td class="year" data-label="没年">1961年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">電話会社の経営者。組織は「共通の目的」「貢献する意欲」「コミュニケーション」でできていると説いた。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ダグラス・マグレガー</th>
+        <td class="year" data-label="没年">1964年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">「人は怠けるもの」と見るX理論と、「人は進んで働くもの」と見るY理論を示した。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">アブラハム・マズロー</th>
+        <td class="year" data-label="没年">1970年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">心理学者。人の欲求を5段階に分けた「欲求階層説」は、モチベーションの理論として経営学でも学ぶ。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">松下幸之助</th>
+        <td class="year" data-label="没年">1989年</td>
+        <td class="country" data-label="国">日本</td>
+        <td data-label="解説">パナソニック（松下電器）の創業者。「経営の神様」と呼ばれ、独自の経営哲学で知られる。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">本田宗一郎</th>
+        <td class="year" data-label="没年">1991年</td>
+        <td class="country" data-label="国">日本</td>
+        <td data-label="解説">本田技研工業（ホンダ）の創業者。技術者として製品づくりにこだわり、オートバイから自動車へ事業を広げた。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">W・エドワーズ・デミング</th>
+        <td class="year" data-label="没年">1993年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">品質管理の専門家。戦後の日本で指導し、日本企業の品質向上に影響を与えた。PDCAサイクルを広めた人物として知られる。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">フレデリック・ハーズバーグ</th>
+        <td class="year" data-label="没年">2000年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">仕事の満足につながる「動機づけ要因」と、不満を防ぐ「衛生要因」を分けて考えた。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ハーバート・サイモン</th>
+        <td class="year" data-label="没年">2001年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">人は完全には合理的になれないという「限定合理性」を唱えた。意思決定の研究でノーベル経済学賞を受賞。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">イゴール・アンゾフ</th>
+        <td class="year" data-label="没年">2002年</td>
+        <td class="country" data-label="国">アメリカ（ロシア生まれ）</td>
+        <td data-label="解説">製品と市場の組み合わせで会社の成長の方向を考える「アンゾフの成長マトリクス」を示した。経営戦略論の先駆者。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ピーター・ドラッカー</th>
+        <td class="year" data-label="没年">2005年</td>
+        <td class="country" data-label="国">アメリカ（オーストリア生まれ）</td>
+        <td data-label="解説">「マネジメント」を体系的にまとめ、「経営学の父」とも呼ばれる。世界中の経営者に読まれている。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">アルフレッド・チャンドラー</th>
+        <td class="year" data-label="没年">2007年</td>
+        <td class="country" data-label="国">アメリカ</td>
+        <td data-label="解説">経営史の研究者。「組織は戦略に従う」という考えを示し、会社の組織と戦略の関係を明らかにした。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">稲盛和夫</th>
+        <td class="year" data-label="没年">2022年</td>
+        <td class="country" data-label="国">日本</td>
+        <td data-label="解説">京セラとKDDIの創業に関わり、小さな集団ごとに採算を管理する「アメーバ経営」で知られる。日本航空の再建にも取り組んだ。</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>経営学ノート 学生による経営学の勉強記録</span>
+    <span><a href="about.html">このサイトについて</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
