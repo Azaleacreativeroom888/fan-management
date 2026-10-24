@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>コラム | 経営学ノート</title>
+<meta name="description" content="経営学にまつわる4コマ漫画やイラスト、小論文形式の短い記事を載せているコラムページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #8b0000;
+    --red-deep: #5c0000;
+    --red-tint: #f6e3e3;
+    --paper: #fbfcfe;
+    --rule: #dbe1ee;
+    --ink: #1f2330;
+    --muted: #596074;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    --margin-x: clamp(28px, 7vw, 88px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      var(--rule) 31px,
+      var(--rule) 32px
+    );
+  }
+
+  a { color: var(--red); text-underline-offset: 3px; }
+  a:hover { color: var(--red-deep); }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+  /* ---------- ヘッダー ---------- */
+  .site-header { background: var(--red); color: #fff; }
+  .site-header .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 14px var(--margin-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    flex-wrap: wrap;
+  }
+  .site-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    color: #fff;
+    text-decoration: none;
+  }
+  .site-title:hover { color: #fff; }
+  .site-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .site-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 14px;
+    line-height: 1.8;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+  }
+  .site-nav a:hover { border-bottom-color: rgba(255,255,255,.7); color: #fff; }
+  .site-nav a[aria-current="page"] { border-bottom-color: #fff; }
+  .site-header :focus-visible { outline-color: #fff; }
+
+  /* ---------- ノートの余白線 ---------- */
+  .notebook {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px 0 var(--margin-x);
+  }
+  .notebook::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--margin-x) - 20px);
+    width: 2px;
+    background: var(--red);
+    opacity: .75;
+  }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; margin: 0; }
+
+  .page-head { padding: 56px 0 8px; }
+  .page-head h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    color: var(--red);
+  }
+  .page-head p { margin: 8px 0 0; color: var(--muted); max-width: 34em; }
+
+  section { padding: 48px 0 8px; }
+  section > h2 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .lead { margin: 0 0 24px; color: var(--muted); }
+
+  /* ---------- 特集ページへのリンクボックス ---------- */
+  .report-link {
+    display: block;
+    max-width: 640px;
+    margin: 32px 0 0;
+    padding: 16px 24px;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid var(--red);
+    border-radius: 8px;
+    position: relative;
+  }
+  .report-link:hover { background: var(--red-deep); border-color: var(--red-deep); color: #fff; }
+  .report-link:focus-visible { outline-color: var(--red); outline-offset: 4px; }
+  .report-link .label { display: block; font-size: .85rem; line-height: 1.8; color: #f3dcdc; }
+  .report-link .title {
+    display: block;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.6;
+  }
+  .report-link .desc { display: block; font-size: .9rem; line-height: 1.8; margin-top: 4px; padding-right: 2em; }
+  .report-link .arrow {
+    position: absolute;
+    right: 24px;
+    bottom: 14px;
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  /* ---------- 漫画・イラスト ---------- */
+  .works {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+  }
+  .work {
+    background: #fff;
+    border: 2px solid var(--red);
+    padding: 16px;
+  }
+  .work.wide { grid-column: 1 / -1; }
+  .work h3 { font-size: 1.1rem; line-height: 1.7; }
+  .work .meta { margin: 0 0 8px; font-size: .85rem; color: var(--muted); line-height: 1.8; }
+  .work .note { margin: 8px 0 0; font-size: .9rem; line-height: 1.8; color: var(--muted); }
+
+  .yonkoma {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .yonkoma li {
+    aspect-ratio: 3 / 4;
+    border: 1.5px dashed var(--red);
+    background: var(--red-tint);
+    padding: 4px 6px;
+    font-size: .8rem;
+    line-height: 1.4;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .placeholder {
+    border: 1.5px dashed var(--red);
+    background: var(--red-tint);
+    color: var(--red);
+    font-weight: 700;
+    font-size: .9rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+  }
+  .placeholder.square { aspect-ratio: 1 / 1; }
+  .placeholder.page { aspect-ratio: 5 / 7; }
+
+  /* ---------- 小論文 ---------- */
+  .essay {
+    max-width: 640px;
+    background: #fff;
+    border: 1.5px solid var(--rule);
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 20px 24px 12px;
+    margin: 0 0 32px;
+  }
+  .essay h3 {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .essay .meta { margin: 0 0 12px; font-size: .85rem; color: var(--muted); line-height: 1.8; }
+  .essay h4 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin: 16px 0 0;
+    color: var(--red);
+  }
+  .essay p { margin: 0 0 8px; }
+
+  /* ---------- フッター ---------- */
+  .site-footer {
+    margin-top: 64px;
+    background: var(--red-deep);
+    color: #f3dcdc;
+  }
+  .site-footer .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 20px var(--margin-x);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px 24px;
+    flex-wrap: wrap;
+    font-size: .9rem;
+    line-height: 1.8;
+  }
+  .site-footer a { color: #fff; }
+  .site-footer :focus-visible { outline-color: #fff; }
+
+  @media (max-width: 760px) {
+    :root { --margin-x: 36px; }
+    .page-head { padding-top: 40px; }
+    .works { grid-template-columns: 1fr; }
+    .essay { padding: 16px 16px 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="site-title" href="index.html">経営学ノート</a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="blog.html">ブログ</a>
+      <a href="column.html" aria-current="page">コラム</a>
+      <a href="about.html">このサイトについて</a>
+    </nav>
+  </div>
+</header>
+
+<main class="notebook">
+
+  <div class="page-head">
+    <h1>コラム</h1>
+    <p>経営学にまつわる漫画やイラスト、そして短い小論文を置いています。勉強の合間に思ったことを、少し長めに書く場所です。</p>
+  </div>
+
+  <a class="report-link" href="report1.html">
+    <span class="label">特集ページ</span>
+    <span class="title">経営学に関する人物</span>
+    <span class="desc">経営学に大きな影響を与えた人物を、ノートにまとめて紹介します。</span>
+    <span class="arrow" aria-hidden="true">→</span>
+  </a>
+
+  <section aria-labelledby="works-title">
+    <h2 id="works-title">漫画・イラスト</h2>
+    <p class="lead">4コマ漫画や、勉強中に描いたイラストを載せていきます。</p>
+
+    <div class="works">
+
+      <!-- 新しい作品は、この下に <div class="work"> をコピーして追加してください -->
+
+      <article class="work wide">
+        <h3>4コマ漫画：テスト前の経営学生</h3>
+        <p class="meta">4コマ漫画・2026.10.07</p>
+        <ol class="yonkoma" aria-label="4コマ漫画の置き場所">
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ol>
+        <p class="note">ここに4コマ漫画の画像が入ります。<code>&lt;li&gt;</code> の中を <code>&lt;img&gt;</code> に変えてください。</p>
+      </article>
+
+      <article class="work">
+        <h3>イラスト：SWOT分析の4人</h3>
+        <p class="meta">イラスト・2026.10.04</p>
+        <div class="placeholder square" role="img" aria-label="イラストの置き場所">ここにイラストが入ります</div>
+      </article>
+
+      <article class="work">
+        <h3>漫画：はじめての経営学</h3>
+        <p class="meta">漫画・2026.10.01</p>
+        <div class="placeholder square" role="img" aria-label="漫画の表紙の置き場所">ここに漫画の1ページ目が入ります</div>
+      </article>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="essay-title">
+    <h2 id="essay-title">小論文</h2>
+    <p class="lead">授業で習ったことや、身近な会社を見て考えたことを、「問い・考察・まとめ」の形で書いています。</p>
+
+    <!-- 新しい小論文は、この下に <article class="essay"> をコピーして追加してください -->
+
+    <article class="essay">
+      <h3>なぜ会社には「経営理念」があるのか</h3>
+      <p class="meta">小論文・2026.10.05</p>
+
+      <h4>問い</h4>
+      <p>会社の壁に貼られている経営理念を、これまではただの飾りだと思っていた。なぜ、どの会社も理念を掲げているのだろうか。</p>
+
+      <h4>考察</h4>
+      <p>授業で学んだのは、経営理念が「判断に迷ったときの基準」になるということだ。会社が大きくなると、社長がすべての判断を下すことはできない。そのとき、社員一人ひとりが同じ基準で考えられれば、上司に確認しなくても同じ方向に進める。</p>
+      <p>つまり理念は、言葉で書かれた会社の羅針盤のようなものだと考えた。</p>
+
+      <h4>まとめ</h4>
+      <p>経営理念は飾りではなく、人が増えても会社がばらばらにならないための仕組みだと思う。次は、実際の会社の理念を一つ選んで、どんな判断につながっているのかを調べてみたい。</p>
+    </article>
+
+    <article class="essay">
+      <h3>コンビニはなぜ近くに何軒もあるのか</h3>
+      <p class="meta">小論文・2026.10.02</p>
+
+      <h4>問い</h4>
+      <p>同じチェーンのコンビニが、歩いてすぐの距離に並んでいることがある。お客さんを取り合ってしまうのに、なぜ近くに出店するのだろうか。</p>
+
+      <h4>考察</h4>
+      <p>調べると、特定の地域に集中して出店する「ドミナント戦略」という考え方があることを知った。店が近くに集まっていれば、商品を運ぶトラックが効率よく回れるし、その地域での知名度も上がる。</p>
+      <p>一方で、近すぎると売上を分け合ってしまうという弱点もある。メリットと弱点のバランスを見ながら出店場所を決めているのだろう。</p>
+
+      <h4>まとめ</h4>
+      <p>一見ふしぎに見える出店の仕方にも、会社なりの戦略があった。身近な場所を「戦略」の目で見ると、経営学がぐっと身近になる。</p>
+    </article>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>経営学ノート 学生による経営学の勉強記録</span>
+    <span><a href="about.html">このサイトについて</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
