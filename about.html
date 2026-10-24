@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>このサイトについて | 経営学ノート</title>
+<meta name="description" content="経営学ノートについての紹介、リンク集、お問い合わせフォームのページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #8b0000;
+    --red-deep: #5c0000;
+    --red-tint: #f6e3e3;
+    --paper: #fbfcfe;
+    --rule: #dbe1ee;
+    --ink: #1f2330;
+    --muted: #596074;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    --margin-x: clamp(28px, 7vw, 88px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      var(--rule) 31px,
+      var(--rule) 32px
+    );
+  }
+
+  a { color: var(--red); text-underline-offset: 3px; }
+  a:hover { color: var(--red-deep); }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+  /* ---------- ヘッダー ---------- */
+  .site-header { background: var(--red); color: #fff; }
+  .site-header .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 14px var(--margin-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    flex-wrap: wrap;
+  }
+  .site-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    color: #fff;
+    text-decoration: none;
+  }
+  .site-title:hover { color: #fff; }
+  .site-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .site-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 14px;
+    line-height: 1.8;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+  }
+  .site-nav a:hover { border-bottom-color: rgba(255,255,255,.7); color: #fff; }
+  .site-nav a[aria-current] { border-bottom-color: #fff; }
+  .site-header :focus-visible { outline-color: #fff; }
+
+  /* ---------- ノートの余白線 ---------- */
+  .notebook {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px 0 var(--margin-x);
+  }
+  .notebook::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--margin-x) - 20px);
+    width: 2px;
+    background: var(--red);
+    opacity: .75;
+  }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; margin: 0; }
+
+  .page-head { padding: 56px 0 8px; }
+  .page-head h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    color: var(--red);
+  }
+  .page-head p { margin: 8px 0 0; color: var(--muted); max-width: 34em; }
+
+  section { padding: 48px 0 8px; }
+  section > h2 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .lead { margin: 0 0 24px; color: var(--muted); }
+
+  /* ---------- サイトについて ---------- */
+  .about-box {
+    max-width: 640px;
+    background: #fff;
+    border: 1.5px solid var(--rule);
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 16px 24px;
+  }
+  .about-box p { margin: 0 0 8px; }
+  .about-box dl { margin: 12px 0 0; display: grid; grid-template-columns: 6em 1fr; gap: 0 16px; }
+  .about-box dt { color: var(--red); font-weight: 700; }
+  .about-box dd { margin: 0; }
+
+  /* ---------- リンクカード ---------- */
+  .link-group { margin: 0 0 32px; }
+  .link-group h3 {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: #fff;
+    border: 1.5px solid var(--rule);
+    border-left: 4px solid var(--red);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .link-card:hover { border-color: var(--red); background: var(--red-tint); color: var(--ink); }
+  .link-text { flex: 1; min-width: 0; }
+  .link-name { display: block; font-family: var(--serif); font-weight: 700; color: var(--red); }
+  .link-desc { display: block; font-size: .85rem; color: var(--muted); }
+  .link-arrow { color: var(--red); font-size: 1.3rem; line-height: 1; }
+
+  /* ---------- お問い合わせフォーム ---------- */
+  .form-card {
+    max-width: 640px;
+    background: #fff;
+    border: 2px solid var(--red);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .form-intro { margin: 0 0 16px; color: var(--muted); }
+  .form-group { margin-bottom: 16px; }
+  .form-label { display: block; font-weight: 700; line-height: 1.8; margin-bottom: 2px; }
+  .required { color: var(--red); }
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.5px solid #b9c1d3;
+    border-radius: 4px;
+    padding: 8px 12px;
+  }
+  .form-textarea { min-height: 160px; resize: vertical; }
+  .form-input:focus-visible,
+  .form-textarea:focus-visible { outline: 3px solid var(--red); outline-offset: 1px; border-color: var(--red); }
+  .field-error { display: block; font-size: .85rem; color: var(--red); line-height: 1.6; }
+  .form-submit {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 6px 28px;
+    line-height: 1.8;
+    background: var(--red);
+    color: #fff;
+    border: 2px solid var(--red);
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .form-submit:hover { background: var(--red-deep); border-color: var(--red-deep); }
+  .form-submit:disabled { opacity: .55; cursor: not-allowed; }
+  .form-success {
+    background: #e8f3ea;
+    border: 1.5px solid #2f7a42;
+    color: #1d5a2c;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .form-success p { margin: 0; }
+  .form-error-global {
+    background: var(--red-tint);
+    border: 1.5px solid var(--red);
+    color: var(--red-deep);
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+  }
+
+  .back-link { display: inline-block; margin-top: 32px; }
+
+  /* ---------- フッター ---------- */
+  .site-footer {
+    margin-top: 64px;
+    background: var(--red-deep);
+    color: #f3dcdc;
+  }
+  .site-footer .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 20px var(--margin-x);
+    font-size: .9rem;
+    line-height: 1.8;
+  }
+  .site-footer .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px 24px;
+    flex-wrap: wrap;
+  }
+  .site-footer .notice { margin: 12px 0 0; font-size: .8rem; line-height: 1.8; color: #e9c9c9; }
+  .site-footer a { color: #fff; }
+  .site-footer :focus-visible { outline-color: #fff; }
+
+  @media (max-width: 760px) {
+    :root { --margin-x: 36px; }
+    .page-head { padding-top: 40px; }
+    .about-box dl { grid-template-columns: 1fr; }
+    .about-box dd { margin-bottom: 8px; }
+    .form-card { padding: 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="site-title" href="index.html">経営学ノート</a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="blog.html">ブログ</a>
+      <a href="column.html">コラム</a>
+      <a href="about.html" aria-current="page">このサイトについて</a>
+    </nav>
+  </div>
+</header>
+
+<main class="notebook">
+
+  <div class="page-head">
+    <h1>このサイトについて</h1>
+    <p>サイトの紹介と、運営者のリンク、お問い合わせフォームをまとめたページです。</p>
+  </div>
+
+  <section aria-labelledby="about-title">
+    <h2 id="about-title">経営学ノートとは</h2>
+    <div class="about-box">
+      <p>経営学を勉強している学生が、学んだことをノートのように記録していく勉強サイトです。</p>
+      <p>ブログには勉強の進捗を日付と日記で、コラムには経営学にまつわる漫画やイラスト、小論文を載せています。特集ページでは、経営学に関する人物をまとめています。</p>
+      <dl>
+        <dt>運営</dt>
+        <dd>Azalea72（Azalea Creative Room）</dd>
+        <dt>内容</dt>
+        <dd>経営学の勉強記録、漫画、イラスト、小論文</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section aria-labelledby="links-title">
+    <h2 id="links-title">リンク</h2>
+    <p class="lead">運営者の作品やSNS、ほかのサイトです。</p>
+
+    <div class="link-group">
+      <h3>漫画・イラスト掲載サイト</h3>
+      <div class="link-grid">
+        <a class="link-card" href="https://rookie.shonenjump.com/users/14728546961183734555" target="_blank" rel="noopener">
+          <span class="link-text">
+            <span class="link-name">ジャンプルーキー</span>
+            <span class="link-desc">オリジナル漫画を掲載中</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="link-card" href="https://www.pixiv.net/users/105728284" target="_blank" rel="noopener">
+          <span class="link-text">
+            <span class="link-name">Pixiv</span>
+            <span class="link-desc">二次創作はこちらに掲載</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">›</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="link-group">
+      <h3>SNS・その他</h3>
+      <div class="link-grid">
+        <a class="link-card" href="https://bsky.app/profile/azaleaazalea88.bsky.social" target="_blank" rel="noopener">
+          <span class="link-text">
+            <span class="link-name">Bluesky</span>
+            <span class="link-desc">近況・作品のお知らせ</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="link-card" href="https://www.youtube.com/@LilyPopins0512" target="_blank" rel="noopener">
+          <span class="link-text">
+            <span class="link-name">YouTube（リリポピ）</span>
+            <span class="link-desc">動画チャンネル</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="link-card" href="https://lilipopi.github.io/lilypopins/" target="_blank" rel="noopener">
+          <span class="link-text">
+            <span class="link-name">リリポピのホームページ</span>
+            <span class="link-desc">別サイト</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">›</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="link-group">
+      <h3>Azalea72のホームページ</h3>
+      <div class="link-grid">
+        <a class="link-card" href="https://azaleacreativeroom888.github.io/storyreviewazalea/" target="_blank" rel="noopener">
+          <span class="link-text">
+            <span class="link-name">書評サイト</span>
+            <span class="link-desc">本・アニメ・映画・ゲーム・小説の備忘録</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="link-card" href="https://azaleacreativeroom888.github.io/fan-english/" target="_blank" rel="noopener">
+          <span class="link-text">
+            <span class="link-name">英語サイト（English Site）</span>
+            <span class="link-desc">英語話者と英語学習者に向けたサイト</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="link-card" href="https://azaleacreativeroom888.github.io/fan-watercolor/" target="_blank" rel="noopener">
+          <span class="link-text">
+            <span class="link-name">水彩画サイト</span>
+            <span class="link-desc">水彩画掲載</span>
+          </span>
+          <span class="link-arrow" aria-hidden="true">›</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="contact-title">
+    <h2 id="contact-title">お問い合わせフォーム</h2>
+
+    <div class="form-card">
+      <p class="form-intro">ご質問・ご感想などはこちらからどうぞ。メールで受け取り、返信します。</p>
+
+      <div data-fs-success class="form-success" role="status" style="display:none;">
+        <p>メッセージを送信しました。ありがとうございます！</p>
+      </div>
+
+      <div data-fs-error class="form-error-global" role="alert" style="display:none;"></div>
+
+      <form id="contact-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+
+        <div class="form-group">
+          <label class="form-label" for="name">お名前</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="ニックネームでも大丈夫です" autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">メールアドレス <span class="required">*</span></label>
+          <input class="form-input" type="email" id="email" name="email" data-fs-field placeholder="example@email.com" autocomplete="email" required>
+          <span data-fs-error="email" class="field-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">メッセージ <span class="required">*</span></label>
+          <textarea class="form-textarea" id="message" name="message" data-fs-field placeholder="メッセージを入力してください" rows="6" required></textarea>
+          <span data-fs-error="message" class="field-error"></span>
+        </div>
+
+        <button class="form-submit" type="submit" data-fs-submit-btn>送信する</button>
+
+      </form>
+    </div>
+
+    <a class="back-link" href="index.html">トップページにもどる</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <div class="row">
+      <span>経営学ノート 学生による経営学の勉強記録</span>
+      <span><a href="index.html">ホーム</a></span>
+    </div>
+    <p class="notice">当サイトに掲載されている画像・文章・作品について、AI学習への利用、トレース（トレパク）、無断転載・転載、二次利用を禁止します。スクリーンショットの転載・無断引用はご遠慮ください。</p>
+    <p class="notice">Please refrain from using any images, text, or works on this website for AI training, tracing, unauthorized reproduction, redistribution, or secondary use.</p>
+  </div>
+</footer>
+
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'maqvpvoz' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>
