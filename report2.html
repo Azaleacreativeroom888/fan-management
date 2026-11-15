@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>経営学の単語 | 経営学ノート</title>
+<meta name="description" content="経営学を勉強するときに出てくる用語を、単語と解説でまとめた特集ページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #8b0000;
+    --red-deep: #5c0000;
+    --red-tint: #f6e3e3;
+    --paper: #fbfcfe;
+    --rule: #dbe1ee;
+    --ink: #1f2330;
+    --muted: #596074;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    --margin-x: clamp(28px, 7vw, 88px);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      var(--rule) 31px,
+      var(--rule) 32px
+    );
+  }
+
+  a { color: var(--red); text-underline-offset: 3px; }
+  a:hover { color: var(--red-deep); }
+  :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+
+  /* ---------- ヘッダー ---------- */
+  .site-header { background: var(--red); color: #fff; }
+  .site-header .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 14px var(--margin-x);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    flex-wrap: wrap;
+  }
+  .site-title {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    color: #fff;
+    text-decoration: none;
+  }
+  .site-title:hover { color: #fff; }
+  .site-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .site-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 14px;
+    line-height: 1.8;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+  }
+  .site-nav a:hover { border-bottom-color: rgba(255,255,255,.7); color: #fff; }
+  .site-nav a[aria-current] { border-bottom-color: #fff; }
+  .site-header :focus-visible { outline-color: #fff; }
+
+  /* ---------- ノートの余白線 ---------- */
+  .notebook {
+    position: relative;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px 0 var(--margin-x);
+  }
+  .notebook::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--margin-x) - 20px);
+    width: 2px;
+    background: var(--red);
+    opacity: .75;
+  }
+
+  h1 { font-family: var(--serif); font-weight: 700; margin: 0; }
+
+  .page-head { padding: 56px 0 8px; }
+  .page-head h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.6;
+    letter-spacing: 0.06em;
+    color: var(--red);
+  }
+  .page-head p { margin: 8px 0 0; color: var(--muted); max-width: 34em; }
+  .back { margin: 16px 0 0; font-size: .95rem; }
+
+  /* ---------- 単語の表 ---------- */
+  .words {
+    width: 100%;
+    max-width: 860px;
+    margin: 32px 0 0;
+    border-collapse: collapse;
+    background: #fff;
+    border: 2px solid var(--red);
+    line-height: 1.8;
+  }
+  .words caption {
+    text-align: left;
+    padding: 0 0 8px;
+    color: var(--muted);
+    font-size: .9rem;
+    caption-side: top;
+  }
+  .words thead th {
+    background: var(--red);
+    color: #fff;
+    text-align: left;
+    font-weight: 700;
+    padding: 8px 14px;
+    white-space: nowrap;
+  }
+  .words tbody th,
+  .words tbody td {
+    padding: 10px 14px;
+    border-top: 1px solid var(--rule);
+    vertical-align: top;
+    text-align: left;
+  }
+  .words tbody th {
+    width: 15em;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--red);
+  }
+
+  /* ---------- フッター ---------- */
+  .site-footer {
+    margin-top: 64px;
+    background: var(--red-deep);
+    color: #f3dcdc;
+  }
+  .site-footer .inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 20px var(--margin-x);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px 24px;
+    flex-wrap: wrap;
+    font-size: .9rem;
+    line-height: 1.8;
+  }
+  .site-footer a { color: #fff; }
+  .site-footer :focus-visible { outline-color: #fff; }
+
+  /* ---------- スマホ：1語ずつカード表示 ---------- */
+  @media (max-width: 760px) {
+    :root { --margin-x: 36px; }
+    .page-head { padding-top: 40px; }
+
+    .words, .words tbody, .words tr, .words th, .words td { display: block; }
+    .words { border: 0; background: transparent; }
+    .words thead { position: absolute; left: -9999px; }
+    .words tbody tr {
+      background: #fff;
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      margin: 0 0 12px;
+      padding: 8px 0;
+    }
+    .words tbody th,
+    .words tbody td {
+      width: auto;
+      border-top: 0;
+      padding: 2px 14px;
+    }
+    .words tbody th { font-size: 1.15rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a class="site-title" href="index.html">経営学ノート</a>
+    <nav class="site-nav" aria-label="メインメニュー">
+      <a href="index.html">ホーム</a>
+      <a href="blog.html">ブログ</a>
+      <a href="column.html" aria-current="true">コラム</a>
+      <a href="about.html">このサイトについて</a>
+    </nav>
+  </div>
+</header>
+
+<main class="notebook">
+
+  <div class="page-head">
+    <h1>経営学の単語</h1>
+    <p>経営学を勉強するときによく出てくる用語を、読み方の五十音順にまとめました。</p>
+    <p class="back"><a href="column.html">コラムにもどる</a></p>
+  </div>
+
+  <table class="words">
+    <caption>経営学の単語の一覧（23語）</caption>
+    <thead>
+      <tr>
+        <th scope="col">単語</th>
+        <th scope="col">解説</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 新しい単語は、この下に <tr> をコピーして追加してください -->
+
+      <tr>
+        <th scope="row">ROE</th>
+        <td>自己資本利益率のこと。株主から預かったお金（自己資本）を使って、どれだけ利益を出せたかを表す数字。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">イノベーション</th>
+        <td>新しい技術や仕組みを取り入れて、新しい価値を生み出すこと。発明だけでなく、社会に広がって変化を起こすことまで含む。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">M&amp;A</th>
+        <td>企業の合併と買収のこと。ほかの会社と一つになったり、会社を買ったりして、事業を大きくしたり新しい分野に入ったりする方法。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">規模の経済</th>
+        <td>生産量が増えるほど、商品1つあたりのコストが下がること。たくさん作る会社ほど、安く売りやすくなる。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">キャッシュフロー</th>
+        <td>一定の期間に、会社に入ってきたお金と出ていったお金の流れ。利益が出ていても、手元のお金が足りなくなると経営は苦しくなる。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">経営理念</th>
+        <td>会社が大切にしている考え方や、存在する目的。判断に迷ったときの基準になる。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">コア・コンピタンス</th>
+        <td>ほかの会社がまねしにくい、会社の中心となる強み。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">コーポレート・ガバナンス</th>
+        <td>会社が正しく運営されるように、経営者をチェックしたり、まとめたりする仕組み。企業統治ともいう。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">財務諸表</th>
+        <td>会社のお金の状況を報告する書類のまとめ。貸借対照表、損益計算書、キャッシュフロー計算書などがある。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">SWOT分析</th>
+        <td>強み・弱み・機会・脅威の4つに分けて、会社の状況を整理する方法。強みと弱みは会社の内側、機会と脅威は外側の要因。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ステークホルダー</th>
+        <td>株主、従業員、お客さん、取引先、地域の人など、会社と関わりのあるすべての人や組織。利害関係者ともいう。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">セグメンテーション</th>
+        <td>市場を、年齢や好みなどが似たお客さんのグループに分けること。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">損益分岐点</th>
+        <td>売上と費用がちょうど同じになり、利益も損失も出ない点。これを超えると黒字になる。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ターゲティング</th>
+        <td>セグメンテーションで分けたグループの中から、自社が狙うお客さんを選ぶこと。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">PDCAサイクル</th>
+        <td>計画（Plan）、実行（Do）、評価（Check）、改善（Action）を繰り返して、仕事を良くしていく方法。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">PPM</th>
+        <td>プロダクト・ポートフォリオ・マネジメントの略。事業を「市場の成長率」と「市場シェア」で分類して、どの事業にお金や人を回すかを考える方法。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ファイブ・フォース分析</th>
+        <td>ポーターが示した「5つの力」の分析。「競合」「新規参入」「代替品」「買い手」「売り手」の5つから、業界の儲かりやすさを調べる方法。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ブランド</th>
+        <td>商品や会社に対して、お客さんが持つ信頼やイメージ。名前やマークそのものを指すこともある。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">ポジショニング</th>
+        <td>お客さんの頭の中で、ほかの商品と比べて自社の商品がどんな位置になるかを決めること。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">マーケティング</th>
+        <td>お客さんが何を求めているかをつかみ、商品が売れる仕組みをつくる活動全体。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">モチベーション</th>
+        <td>仕事に取り組む意欲ややる気。経営学では、人をやる気にさせる理論が研究されている。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">4P</th>
+        <td>マーケティングの4つの要素。商品（Product）、価格（Price）、流通（Place）、販売促進（Promotion）のこと。</td>
+      </tr>
+
+      <tr>
+        <th scope="row">リーダーシップ</th>
+        <td>目標に向かって、人をまとめ、動かしていく力。</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</main>
+
+<footer class="site-footer">
+  <div class="inner">
+    <span>経営学ノート 学生による経営学の勉強記録</span>
+    <span><a href="about.html">このサイトについて</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
